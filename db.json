@@ -1,0 +1,48 @@
+{
+  "Components": [
+    {
+      "id": "1",
+      "title": "کلید فشاری",
+      "descrption": "این کلید فشاری ...........................",
+      "location": {
+        "place": "warehouse1",
+        "position": "A-A"
+      },
+      "count": 12,
+      "image": ""
+    },
+    {
+      "id": "2",
+      "title": "کلید فشاری2",
+      "descrption": "این کلید فشاری ...........................",
+      "location": {
+        "place": "warehouse2",
+        "position": ""
+      },
+      "count": 10,
+      "image": ""
+    },
+    {
+      "id": "3",
+      "title": "کلید فشاری3",
+      "descrption": "این کلید فشاری ...........................",
+      "location": {
+        "place": "warehouse3",
+        "position": ""
+      },
+      "count": 20,
+      "image": ""
+    },
+    {
+      "id": "8e92",
+      "title": "سشیشسی",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvTd3dAGXe_GZMOnPDwlub_HG9rma0IqzTkQ&s",
+      "descrption": "شسیشسیشسیشسی",
+      "location": {
+        "place": "warehouse3",
+        "position": ""
+      },
+      "count": 5
+    }
+  ]
+}
