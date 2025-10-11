@@ -1,14 +1,22 @@
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useMemo, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiHome, FiPlus, FiList, FiSearch } from "react-icons/fi";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    navigate(`/Home?search=${encodeURIComponent(value)}`);
   };
 
   return (
@@ -32,7 +40,7 @@ const Header = () => {
                   }`
                 }
                 style={{ textDecoration: "none" }}
-                to={"/"}
+                to={"/Home"}
               >
                 <FiHome className="text-xl" />
                 قطعات
@@ -72,6 +80,8 @@ const Header = () => {
             <input
               type="search"
               name="searchBar"
+              value={searchTerm}
+              onChange={handleSearchChange}
               className="pl-10 pr-4 py-2 rounded-lg bg-slate-800 text-white placeholder-gray-400 border border-purple-500 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-pink-400 transition-all duration-200"
               placeholder="جستجو..."
             />
@@ -90,7 +100,7 @@ const Header = () => {
                   }`
                 }
                 style={{ textDecoration: "none" }}
-                to={"/"}
+                to={"/Home"}
                 onClick={toggleMenu}
               >
                 <FiHome className="text-xl" />

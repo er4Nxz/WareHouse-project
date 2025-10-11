@@ -1,48 +1,72 @@
 {
   "Components": [
     {
-      "id": "1",
-      "title": "کلید فشاری",
-      "descrption": "این کلید فشاری ...........................",
+      "title": "کلید فشاری6",
+      "descrption": "این کلید طبیلسیل فشاری ...",
+      "count": 15,
+      "image": "https://www.javanelec.com/stfiles/getappdocument/2/false/fa457995-94b0-47c0-8cc5-6f6ed55aa2e5.jpg",
+      "location": {
+        "place": "warehouse3",
+        "position": "weqwe"
+      },
+      "id": "2"
+    },
+    {
+      "title": "lm317",
+      "descrption": "رگولاتور قابل تنظیم",
+      "count": 3,
+      "image": "https://www.javanelec.com/stfiles/getappdocument/2/false/95b82239-1102-4780-a3fe-1c5d9c515105.jpg",
       "location": {
         "place": "warehouse1",
-        "position": "A-A"
+        "position": "3-5-2"
       },
+      "id": "1915"
+    },
+    {
+      "title": "IDT-B21054",
+      "descrption": "CODEC",
+      "count": 8,
+      "image": "https://www.javanelec.com/stfiles/getappdocument/2/false/3a1aeea3-728e-4ca0-bd1b-e1177573f931.jpg",
+      "location": {
+        "place": "warehouse2",
+        "position": "5-9-7"
+      },
+      "id": "8524"
+    },
+    {
+      "title": "21asd",
+      "descrption": "sadasdasd",
       "count": 12,
-      "image": ""
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvTd3dAGXe_GZMOnPDwlub_HG9rma0IqzTkQ&s",
+      "location": {
+        "place": "warehouse3",
+        "position": "weqwe"
+      },
+      "id": "f132"
+    }
+  ],
+  "Place": [
+    {
+      "id": "1",
+      "place": "warehouse1"
     },
     {
       "id": "2",
-      "title": "کلید فشاری2",
-      "descrption": "این کلید فشاری ...........................",
-      "location": {
-        "place": "warehouse2",
-        "position": ""
-      },
-      "count": 10,
-      "image": ""
+      "place": "warehouse2"
     },
     {
       "id": "3",
-      "title": "کلید فشاری3",
-      "descrption": "این کلید فشاری ...........................",
-      "location": {
-        "place": "warehouse3",
-        "position": ""
-      },
-      "count": 20,
-      "image": ""
+      "place": "warehouse3"
+    }
+  ],
+  "needsComponent": [
+    {
+      "id": "1",
+      "needTitle": "دیود"
     },
     {
-      "id": "8e92",
-      "title": "سشیشسی",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvTd3dAGXe_GZMOnPDwlub_HG9rma0IqzTkQ&s",
-      "descrption": "شسیشسیشسیشسی",
-      "location": {
-        "place": "warehouse3",
-        "position": ""
-      },
-      "count": 5
+      "id": "0f5f",
+      "needTitle": "کلید فشاری "
     }
   ]
 }

@@ -11,16 +11,17 @@ const useFetch = (url) => {
       let response = await axios.get(url);
       setState(response.data);
       setLoading(false);
+      setError("");
     } catch (error) {
-      setLoading(true);
       setError(error.message);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
-  return [state, loading, error];
+  }, [url]);
+  return [state, loading, error, fetchData];
 };
 
 export default useFetch;
