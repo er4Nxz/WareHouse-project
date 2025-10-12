@@ -43,6 +43,17 @@
         "position": "weqwe"
       },
       "id": "f132"
+    },
+    {
+      "title": "مودم ",
+      "descrption": "این مودم .......",
+      "count": 1430,
+      "image": "https://www.javanelec.com/stfiles/getappdocument/2/false/fa457995-94b0-47c0-8cc5-6f6ed55aa2e5.jpg",
+      "location": {
+        "place": "warehouse1",
+        "position": "A-12"
+      },
+      "id": "e18f"
     }
   ],
   "Place": [
