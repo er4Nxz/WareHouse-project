@@ -60,6 +60,30 @@ const SideBar = ({ setWarehouse }) => {
                 قطعات رو به اتمام
               </div>
             </li>
+            <li>
+              <div
+                className="block px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-300 text-white hover:text-pink-400 font-medium cursor-pointer"
+                onClick={() => setWarehouse("خراب")}
+              >
+                خراب
+              </div>
+            </li>
+            <li>
+              <div
+                className="block px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-300 text-white hover:text-pink-400 font-medium cursor-pointer"
+                onClick={() => setWarehouse("قابل تعمیر")}
+              >
+                قابل تعمیر
+              </div>
+            </li>
+            <li>
+              <div
+                className="block px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-300 text-white hover:text-pink-400 font-medium cursor-pointer"
+                onClick={() => setWarehouse("سالم")}
+              >
+                سالم
+              </div>
+            </li>
           </ul>
         </aside>
       </div>
@@ -85,6 +109,7 @@ const SideBar = ({ setWarehouse }) => {
               فیلترها
             </h5>
             <ul className="space-y-3">
+              
               <li>
                 <div
                   className="block px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-300 text-white hover:text-pink-400 font-medium cursor-pointer"
@@ -117,6 +142,39 @@ const SideBar = ({ setWarehouse }) => {
                   />
                 );
               })}
+              <li>
+                <div
+                  className="block px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-300 text-white hover:text-pink-400 font-medium cursor-pointer "
+                  onClick={() => {
+                    setWarehouse("خراب");
+                    setOpen(false);
+                  }}
+                >
+                  خراب
+                </div>
+              </li>
+              <li>
+                <div
+                  className="block px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-300 text-white hover:text-pink-400 font-medium cursor-pointer"
+                  onClick={() => {
+                    setWarehouse("قابل تعمیر");
+                    setOpen(false);
+                  }}
+                >
+                  قابل تعمیر
+                </div>
+              </li>
+              <li>
+                <div
+                  className="block px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-300 text-white hover:text-pink-400 font-medium cursor-pointer"
+                  onClick={() => {
+                    setWarehouse("سالم");
+                    setOpen(false);
+                  }}
+                >
+                  سالم
+                </div>
+              </li>
             </ul>
           </aside>
         </div>

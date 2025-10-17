@@ -7,6 +7,9 @@ import {
   FaMapMarkerAlt,
   FaWarehouse,
   FaSave,
+  FaExclamationTriangle,
+  FaTools,
+  FaCheckCircle,
 } from "react-icons/fa";
 import { MdNotificationImportant } from "react-icons/md";
 import { GoNumber } from "react-icons/go";
@@ -24,10 +27,17 @@ const Update = ({ state }) => {
   const [descrption, setDescrption] = useState("");
   const [count, setCount] = useState("");
   const [image, setImage] = useState("");
+  const [status, setStatus] = useState("");
   const [location, setLocation] = useState({
     place: "",
     position: "",
   });
+
+  const statusOptions = [
+    { value: "خراب", label: "خراب" },
+    { value: "قابل تعمیر", label: "قابل تعمیر" },
+    { value: "سالم", label: "سالم" },
+  ];
 
   useEffect(() => {
     setTitle(state.title);
@@ -38,6 +48,7 @@ const Update = ({ state }) => {
       place: state.location.place,
       position: state.location.position,
     });
+    setStatus(state.status);
   }, [state]);
 
   const handleSubmit = (e) => {
@@ -47,7 +58,8 @@ const Update = ({ state }) => {
       !descrption ||
       !image ||
       !location.place ||
-      !location.position
+      !location.position ||
+      !status
     ) {
       Swal.fire({
         title: "خطا!",
@@ -64,6 +76,7 @@ const Update = ({ state }) => {
           count,
           image,
           location,
+          status,
         });
       } catch (error) {
         console.log(error.message);
@@ -202,7 +215,7 @@ const Update = ({ state }) => {
                 <label className="block text-sm font-medium text-gray-300 mb-4">
                   <FaWarehouse className="inline mr-1" /> انبار
                 </label>
-                <div className="flex flex-wrap justify-center gap-2">
+                <div className="flex flex-wrap justify-around gap-2">
                   {place?.map((item) => {
                     return (
                       <Items
@@ -232,6 +245,37 @@ const Update = ({ state }) => {
                   className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                   placeholder="آدرس دقیق تر را وارد کنید"
                 />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  {status === "خراب" && <FaExclamationTriangle className="inline mr-1 text-red-400" />}
+                  {status === "قابل تعمیر" && <FaTools className="inline mr-1 text-orange-400" />}
+                  {status === "سالم" && <FaCheckCircle className="inline mr-1 text-green-400" />}
+                  وضعیت
+                </label>
+                <div className="flex flex-wrap justify-around gap-2">
+                  {statusOptions.map((option) => (
+                    <label
+                      key={option.value}
+                      className={`block cursor-pointer px-4 py-2 rounded-lg border-2 transition-all duration-300 text-center font-medium ${
+                        status === option.value
+                          ? "bg-purple-600 border-purple-500 text-white shadow-lg"
+                          : "bg-slate-700 border-slate-600 text-gray-300 hover:bg-slate-600 hover:border-slate-500"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="status"
+                        value={option.value}
+                        checked={status === option.value}
+                        onChange={(e) => setStatus(e.target.value)}
+                        className="hidden"
+                        required
+                      />
+                      {option.label}
+                    </label>
+                  ))}
+                </div>
               </div>
               <button
                 type="submit"

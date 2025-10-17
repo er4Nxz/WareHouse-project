@@ -9,6 +9,9 @@ import {
   FaMapMarkerAlt,
   FaWarehouse,
   FaSave,
+  FaExclamationTriangle,
+  FaTools,
+  FaCheckCircle,
 } from "react-icons/fa";
 import useFetch from "../../Hooks/useFetch/useFetch";
 import Items from "./Items/Items";
@@ -20,6 +23,7 @@ const Create = () => {
   const [title, setTitle] = useState("");
   const [descrption, setDescrption] = useState("");
   const [image, setImage] = useState("");
+  const [status, setStatus] = useState("");
   const [location, setLocation] = useState({
     place: "",
     position: "",
@@ -29,6 +33,12 @@ const Create = () => {
 
   const [state] = useFetch("http://localhost:3000/Place");
 
+  const statusOptions = [
+    { value: "خراب", label: "خراب" },
+    { value: "قابل تعمیر", label: "قابل تعمیر" },
+    { value: "سالم", label: "سالم" },
+  ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -36,7 +46,8 @@ const Create = () => {
       !descrption ||
       !image ||
       !location.place ||
-      !location.position
+      !location.position ||
+      !status
     ) {
       Swal.fire({
         title: "خطا!",
@@ -53,6 +64,7 @@ const Create = () => {
           descrption,
           location,
           count,
+          status,
         });
       } catch (error) {
         Swal.fire({
@@ -187,7 +199,7 @@ const Create = () => {
               <label className="block text-sm font-medium text-gray-300 mb-4">
                 <FaWarehouse className="inline mr-1" /> انبار
               </label>
-              <div className="flex flex-wrap justify-center gap-2">
+              <div className="flex flex-wrap justify-around  gap-2">
                 {state?.map((item) => {
                   return (
                     <Items
@@ -217,6 +229,47 @@ const Create = () => {
                 className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                 placeholder="آدرس دقیق تر را وارد کنید"
               />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                وضعیت
+              </label>
+              <div className="flex flex-wrap justify-around gap-2">
+                {statusOptions.map((option) => (
+                  <label
+                    key={option.value}
+                    className={`block cursor-pointer px-4 py-2 rounded-lg border-2 transition-all duration-300 text-center font-medium ${
+                      status === option.value
+                        ? "bg-purple-600 border-purple-500 text-white shadow-lg"
+                        : "bg-slate-700 border-slate-600 text-gray-300 hover:bg-slate-600 hover:border-slate-500"
+                    }`}
+                  >
+                    {status === option.value && (
+                      <>
+                        {option.value === "خراب" && (
+                          <FaExclamationTriangle className="inline m-1 text-red-400" />
+                        )}
+                        {option.value === "قابل تعمیر" && (
+                          <FaTools className="inline m-1 text-orange-400" />
+                        )}
+                        {option.value === "سالم" && (
+                          <FaCheckCircle className="inline m-1 text-green-400" />
+                        )}
+                      </>
+                    )}
+                    <input
+                      type="radio"
+                      name="status"
+                      value={option.value}
+                      checked={status === option.value}
+                      onChange={(e) => setStatus(e.target.value)}
+                      className="hidden"
+                      required
+                    />
+                    {option.label}
+                  </label>
+                ))}
+              </div>
             </div>
             <button
               type="submit"

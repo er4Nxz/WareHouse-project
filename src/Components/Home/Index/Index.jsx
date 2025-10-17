@@ -19,6 +19,8 @@ const Index = () => {
         ? true
         : warehouse === "coming-end"
         ? item.count <= 10
+        : warehouse === "خراب" || warehouse === "قابل تعمیر" || warehouse === "سالم"
+        ? item.status === warehouse
         : warehouse === ""
         ? true
         : item.location.place.trim().toLowerCase() ===
@@ -33,7 +35,7 @@ const Index = () => {
 
     if (warehouse === "" || warehouse === "all") {
       return matchesSearch;
-    } else if (warehouse === "coming-end") {
+    } else if (warehouse === "coming-end" || warehouse === "خراب" || warehouse === "قابل تعمیر" || warehouse === "سالم") {
       return matchesWarehouse && matchesSearch;
     } else {
       return matchesWarehouse;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FiMapPin, FiPackage } from "react-icons/fi";
 import { MdEdit } from "react-icons/md";
+import { FaExclamationTriangle, FaTools, FaCheckCircle } from "react-icons/fa";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Delete from "../../Delete/Delete";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ const Items = ({ item, refetch }) => {
   const [image, setImage] = useState(null);
   const [location, setLocation] = useState(null);
   const [count, setCount] = useState(null);
+  const [status, setStatus] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -19,6 +21,7 @@ const Items = ({ item, refetch }) => {
       setImage(item.image);
       setLocation(item.location);
       setCount(item.count);
+      setStatus(item.status);
     }, 1000);
   }, [item]);
   return (
@@ -91,7 +94,27 @@ const Items = ({ item, refetch }) => {
             </div>
             {location ? (
               <span className="text-white font-medium bg-slate-700 px-2 py-1 rounded-full">
-                {location.place + "/" + (location.position || "") || "N/A"}
+                {location.place + " / " + (location.position || "") || "N/A"}
+              </span>
+            ) : (
+              <Skeleton
+                width={80}
+                height={20}
+                baseColor="#475569"
+                highlightColor="#64748b"
+              />
+            )}
+          </div>
+          <div className="flex items-center justify-between text-xs">
+            <div className="flex items-center gap-1 text-gray-300">
+              {status === "خراب" && <FaExclamationTriangle className="text-red-400" />}
+              {status === "قابل تعمیر" && <FaTools className="text-orange-400" />}
+              {status === "سالم" && <FaCheckCircle className="text-green-400" />}
+              <span>وضعیت :</span>
+            </div>
+            {status ? (
+              <span className="text-white font-medium bg-slate-700 px-3 py-1 rounded-full">
+                {status || "N/A"}
               </span>
             ) : (
               <Skeleton
